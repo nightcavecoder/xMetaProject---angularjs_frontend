@@ -1,0 +1,28 @@
+<ul class="breadcrumb">
+  <li  class="active">MetaProjects</li>
+</ul>
+
+<button class="btn btn-primary" ui-sref="metaProjectNew">new MetaProject</button>
+<div>
+  <div class="well well-small">
+
+    <table class="table table-striped table-hover ">
+      <thead>
+      <tr>
+        <th >Title</th>
+        <th >Course of Studies</th>
+        <th >Semester</th>
+        <th >Leader</th>
+      </tr>
+      </thead>
+      <tr ng-repeat="metaProject in metaProjects " ui-sref-active="active">
+        <td><a ui-sref="app.logged.metaproject.selected.detail({metaprojectId:metaproject.metaprojectId})">{{metaproject.metaprojectTitle}}</a></td>
+        <td>{{metaproject.courseOfStudies}}</a></td>
+        <td>{{metaproject.semester}}</a></td>
+        <td>{{metaproject.metaprojectLeader.userName}}</a></td>
+      </tr>
+    </table>
+    <div ui-view="selected"></div>
+    <div ui-view class="span9 slide"></div>
+  </div>
+</div>
