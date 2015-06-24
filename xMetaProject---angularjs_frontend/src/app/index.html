@@ -14,7 +14,7 @@
     <!-- endbuild -->
 
     <!-- build:css({.tmp/serve,src}) styles/app.css -->
-    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/readable/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/readable/bootstrap.min.css" rel="stylesheet">-->
     <!-- inject:css -->
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
@@ -87,15 +87,23 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
-    <script type="text/javascript" src="../../bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="../../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="../../node_modules/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
 
     <script type="text/javascript" src="app.js"></script>
 
     <script type="text/javascript" src="metaproject/metaProjectConfig.js"></script>
-    <script type="text/javascript" src="metaproject/metaProjectController.js"></script>
+
+    <script type="text/javascript" src="fake_backend/fake_route_config.js"></script>
+    <script type="text/javascript" src="fake_backend/fake_database_metaProject.js"></script>
+    <script type="text/javascript" src="fake_backend/fake_restservice_metaProject.js"></script>
+
     <script type="text/javascript" src="metaproject/metaProjectResource.js"></script>
+    <script type="text/javascript" src="metaproject/metaProjectCtrl_list.js"></script>
+    <script type="text/javascript" src="metaproject/metaProjectCtrl_detail.js"></script>
+
 
 
 
@@ -110,12 +118,7 @@
     <!--<script type="text/javascript" src="app/app.js"></script>-->
 
 
-    <br><br>
-    <link rel="shortcut icon" type="image/png" href="../../node_modules/jasmine-core/images/jasmine_favicon.png">
-    <link rel="stylesheet" type="text/css" href="../../node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
-    <script type="text/javascript" src="../../node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
-    <script type="text/javascript" src="../../node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
-    <script type="text/javascript" src="../../node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+
 
 
     <!-- angular templates will be automatically converted in js and inserted here -->

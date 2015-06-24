@@ -4,7 +4,9 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var wrench = require('wrench');
 var karma = require('karma').server;
-var browserSync = require('browser-sync').create();
+//var browserSync = require('browser-sync').create();
+//var concat = require('gulp-concat');
+//var jasmine = require('gulp-jasmine');
 
 var options = {
   src: 'src',
@@ -38,7 +40,7 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('default', ['clean', 'tdd'], function () {
+gulp.task('default', ['clean'], function () {
     gulp.start('build');
 });
 

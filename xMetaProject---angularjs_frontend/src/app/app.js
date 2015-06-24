@@ -6,30 +6,18 @@
 angular.module('xMetaProjectApp', [
   'ui.router',
   'ngResource',
-  'module_metaProject'
+  'module_metaProject',
+  'ngMockE2E'
 ])
 
   .config(
-    ['$stateProvider',
-      function ($stateProvider) {
+    function () {
         console.log('app.config');
-        $stateProvider
-          .state('home', {
-            abstract: false,
-            url: '/',
-            views: {
-              '': {
-                templateUrl: 'metaproject/metaProjectList.html',
-                controller: 'metaProjectController'
-              }
-            }
-          });
-      }
-    ]
+    }
   )
 
-  .run(['$state',function($state){
-    console.log('test');
-      $state.go('home');
-    }]
-  );
+  //.run(function($httpBackend){
+  //  $httpBackend.whenGET('metaproject/metaProjectView_list.html').passThrough();
+  //  $httpBackend.whenGET(/^\/templates\//).passThrough();
+  //  }
+  //);

@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/.tmp/partials/templateCacheHtml.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gulpfile.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/karma.conf.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/node_modules/gulp-jasmine/node_modules/jasmine/Gruntfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/package.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/fake_backend/fake_database_metaProject.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/fake_backend/fake_restservice_metaProject.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/fake_backend/fake_route_config.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/login/loginResource.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectConfig.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectCtrl_detail.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectCtrl_list.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectResource.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectView_list.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/fake_backend/dummy.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/fake_backend/fake_backend_metaProject.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/spec/metaproject/spec_metaProjectController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/spec/metaproject/spec_metaProjectResource.js" charset="UTF-8" />
   </component>
 </project>
