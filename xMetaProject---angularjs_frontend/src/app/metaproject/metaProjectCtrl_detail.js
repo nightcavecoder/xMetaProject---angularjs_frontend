@@ -5,23 +5,23 @@
 
 angular.module('module_metaProject')
 
-  .controller('metaProjectCtrl_detail', ['$scope', '$state', 'metaProjectResource', function($scope, $state, metaProjectResource){
+  .controller('metaProjectCtrl_detail', ['$scope', '$state','$stateParams', 'metaProjectResource', function($scope, $state, $stateParams, metaProjectResource){
 
-    $scope.metaproject = {id: 1, title:'firstMetaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. John'}
+    console.log('metaprojctctrl detail ' + $stateParams.metaprojectid);
 
-    $scope.clickNewMetaProject = function(){
-      state.go('metaProjectNew');
-    };
+    $scope.metaproject = {};
 
     //it should give us all the metaprojects from the REST-Service
-    $scope.getAllMetaProjects = function (){
+    $scope.getMetaProject = function (){
       var successCallback = function (data){
         $scope.metaprojects = data;
+        //$state.go('projectList');
       };
       var errorCallback = function(){
 
       };
-      metaProjectResource.getAll(successCallback, errorCallback);
+      $scope.metaproject = metaProjectResource.get({id:$stateParams.metaprojectid}, successCallback, errorCallback);
     };
+    $scope.getMetaProject();
 
   }]);

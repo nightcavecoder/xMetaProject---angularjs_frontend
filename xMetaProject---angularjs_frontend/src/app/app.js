@@ -7,17 +7,11 @@ angular.module('xMetaProjectApp', [
   'ui.router',
   'ngResource',
   'module_metaProject',
-  'ngMockE2E'
-])
+  'module_project'
+]);
 
-  .config(
-    function () {
-        console.log('app.config');
-    }
-  )
 
-  //.run(function($httpBackend){
-  //  $httpBackend.whenGET('metaproject/metaProjectView_list.html').passThrough();
-  //  $httpBackend.whenGET(/^\/templates\//).passThrough();
-  //  }
-  //);
+  //.config(function(){
+  //  //app config
+  //});
+

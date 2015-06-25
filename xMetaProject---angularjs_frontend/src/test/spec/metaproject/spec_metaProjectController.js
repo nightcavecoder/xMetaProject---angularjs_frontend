@@ -31,7 +31,7 @@ describe('metaProjectCtrl_list', function(){
   beforeEach(inject(function($injector) {
     // Set up the mock http service responses
     $httpBackend = $injector.get('$httpBackend');
-    $httpBackend.whenGET('metaproject/metaProjectView_list.html').passThrough();;
+    $httpBackend.whenGET('metaproject/metaProjectView_list.html').passThrough();
   }));
 
   it('contains spec with an expectation', function() {

@@ -1,6 +1,8 @@
 /**
  * Created by gionuwe on 23.06.2015.
  */
+
+"use strict";
 angular.module('xMetaProjectApp').service('fake_database_metaProject', function(){
   this.data=([
       {id: 1, title:'firstMetaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. John'},

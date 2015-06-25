@@ -1,19 +1,18 @@
 /**
- * Created by gionuwe on 10.06.2015.
+ * Created by gionuwe on 25.06.2015.
  */
-/**
- * Created by gionuwe on 03.06.2015.
- */
+
 'use strict';
 
-angular.module('module_metaProject')
+angular.module('module_project')
 
-  .factory('metaProjectResource', ['$resource', '$http' ,function($resource, $http){
+  .factory('projectResource', ['$resource' ,function($resource){
 
-    var resource = $resource('/metaprojects/:id',
 
-        {id:''}
-     ,
+    var resource = $resource('/metaprojects/1/projects/2',
+      {
+
+      },
 
       {
         'create':{method:'POST',responseType : 'json'},

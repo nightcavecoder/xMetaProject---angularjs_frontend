@@ -2,7 +2,7 @@
   <li  class="active">MetaProjects</li>
 </ul>
 
-<button class="btn btn-primary" ui-sref="metaProjectNew">new MetaProject</button>
+
 <div>
   <div class="well well-small">
     <table class="table table-striped table-hover ">
@@ -23,7 +23,8 @@
         <td>{{metaproject.leader}}</td>
       </tr>
     </table>
+    <button ui-sref-active="active" class="btn btn-primary" ui-sref="metaProjectNew">new MetaProject</button>
 
-    <div ui-view></div>
+    <div ui-view="projectList"></div>
   </div>
 </div>

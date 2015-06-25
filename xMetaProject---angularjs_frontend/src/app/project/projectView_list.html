@@ -1,0 +1,31 @@
+<ul class="breadcrumb">
+  <li>MetaProjects</li>
+  <li>{{metaproject.title}}</li>
+  <li class="active">Projects</li>
+</ul>
+
+
+<div>
+  <div class="well well-small">
+    <table class="table table-striped table-hover ">
+      <thead>
+      <tr>
+        <th >Title</th>
+        <th >test</th>
+        <th >test</th>
+        <th >test</th>
+      </tr>
+      </thead>
+
+      <tr ng-repeat="project in projects" ui-sref-active="active">
+        <!-- <a ui-sref="app.logged.metaproject.selected.detail({metaprojectId:metaproject.metaprojectId})"-->
+        <td ui-sref="projectDetail({projectid:project.id})">{{project.title}}</td>
+        <td>{{project.courseOfStudies}}</td>
+        <td>{{project.semester}}</td>
+        <td>{{project.leader}}</td>
+      </tr>
+    </table>
+
+
+  </div>
+</div>

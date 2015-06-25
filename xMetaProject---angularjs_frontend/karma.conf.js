@@ -31,7 +31,10 @@ module.exports = function(config) {
       'src/app/metaproject/metaProjectResource.js',
       'src/app/metaproject/metaProjectCtrl_list.js',
       'src/app/metaproject/metaProjectCtrl_detail.js',
-      'src/test/spec/metaproject/spec_metaProjectController.js'
+
+
+      //'src/test/mock/stateMock.js'
+      //'src/test/spec/metaproject/spec_metaProjectController.js'
       //'src/test/fake_backend/fake_backend_metaProject.js',
       //'src/test/fake_backend/dummy.js'
 
