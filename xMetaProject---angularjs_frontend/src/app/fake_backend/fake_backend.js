@@ -7,10 +7,9 @@ angular.module('xMetaProjectApp')
 
   .run(['$httpBackend', 'fake_database_metaProject', function($httpBackend, fake_database_metaProject) {
 
-    console.log('BLAAL');
-
-    //$httpBackend.whenGET('metaproject/metaProjectView_list.html').passThrough();
+    $httpBackend.whenGET('metaproject/metaProjectView_list.html').passThrough();
     $httpBackend.whenGET('metaproject/metaProjectView_detail.html').passThrough();
+    $httpBackend.whenGET('project/projectView_list.html').passThrough();
 
 
     $httpBackend.whenGET('/metaprojects').respond(function(method, url, data){
@@ -20,9 +19,21 @@ angular.module('xMetaProjectApp')
     });
 
     $httpBackend.whenGET('/metaprojects').respond(200, [
-      {id: 1, title:'firstMetaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. John'},
-      {id: 2, title:'secondMetaproject', courseOfStudies: 'ain', semester: 3, leader:'Prof. Xey'},
-      {id: 3, title:'thirdMetaproject', courseOfStudies: 'gin', semester: 2, leader:'Doz. Myr'}
+      {id: 1, title:'test Metaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Metaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Metaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Metaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'}
+    ]);
+
+    $httpBackend.whenGET('/metaprojects/1').respond(200, [
+      {id: 1, title:'test Metaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'}
+    ]);
+
+    $httpBackend.whenGET('/metaprojects/1/projects').respond(200, [
+      {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
     ]);
 
     $httpBackend.whenGET('/metaprojects/new').passThrough();

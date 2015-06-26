@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.tools.xMetaProject.model.User;
@@ -21,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class MetaProject implements Serializable
+public class Project implements Serializable
 {
    /** Default value included to remove warning. Remove or modify at will. **/
    private static final long serialVersionUID = 1L;
@@ -33,15 +32,15 @@ public class MetaProject implements Serializable
    @NotNull
    private String title;
 
-   private String courseOfStudies;
-
-   private String semester;
+   private String description;
 
    @ManyToOne
-   private User leader;
+   private User metaproject;
    
-   @OneToMany(mappedBy="metaproject")
-   private Collection<Project> metaProjects = new HashSet<Project>();
+
+   @ManyToMany
+   @JoinTable
+   private Collection<User> members = new HashSet<User>();
 
    public Long getId()
    {
@@ -57,37 +56,7 @@ public class MetaProject implements Serializable
    {
       this.title = title;
    }
-
-   public String getCourseOfStudies()
-   {
-      return courseOfStudies;
-   }
-
-   public void setCourseOfStudies(String courseOfStudies)
-   {
-      this.courseOfStudies = courseOfStudies;
-   }
-
-   public String getSemester()
-   {
-      return semester;
-   }
-
-   public void setSemester(String semester)
-   {
-      this.semester = semester;
-   }
-
-   public User getLeader()
-   {
-      return leader;
-   }
-
-   public void setLeader(User leader)
-   {
-      this.leader = leader;
-   }
-
+   
    public static long getSerialversionuid()
    {
       return serialVersionUID;
@@ -97,5 +66,13 @@ public class MetaProject implements Serializable
    {
       this.id = id;
    }
+
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 }

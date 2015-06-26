@@ -4,16 +4,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
+
+
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.jboss.tools.xMetaProject.model.MetaProject;
+import org.jboss.tools.xMetaProject.model.Project;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -34,8 +39,11 @@ public class User implements Serializable
    @NotNull
    private String password;
 
-   @OneToMany
-   private Collection<MetaProject> metaProject = new ArrayList<MetaProject>();
+   @OneToMany(mappedBy="leader")
+   private Collection<MetaProject> metaProjects = new HashSet<MetaProject>();
+   
+   @ManyToMany(mappedBy="members")
+   private Collection<Project> projects = new HashSet<Project>();
 
 	public Long getId() {
 		return id;
@@ -61,12 +69,12 @@ public class User implements Serializable
 		this.password = password;
 	}
 	
-	public Collection<MetaProject> getMetaProject() {
-		return metaProject;
+	public Collection<MetaProject> getMetaProjects() {
+		return metaProjects;
 	}
 	
-	public void setMetaProject(Collection<MetaProject> metaProject) {
-		this.metaProject = metaProject;
+	public void setMetaProjects(Collection<MetaProject> metaProjects) {
+		this.metaProjects = metaProjects;
 	}
 	
 	public static long getSerialversionuid() {

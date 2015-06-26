@@ -20,31 +20,31 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import org.jboss.tools.xMetaProject.model.User;
+import org.jboss.tools.xMetaProject.model.Project;
 
 /**
  * 
  */
 @Stateless
-@Path("/users")
-public class UserEndpoint
+@Path("/projects")
+public class ProjectEndpoint
 {
    @PersistenceContext(unitName = "xMetaProject---javaee_backend-persistence-unit")
    private EntityManager em;
 
    @POST
    @Consumes("application/json")
-   public Response create(User entity)
+   public Response create(Project entity)
    {
       em.persist(entity);
-      return Response.created(UriBuilder.fromResource(UserEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      return Response.created(UriBuilder.fromResource(ProjectEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
    }
 
    @DELETE
    @Path("/{id:[0-9][0-9]*}")
    public Response deleteById(@PathParam("id") Long id)
    {
-      User entity = em.find(User.class, id);
+      Project entity = em.find(Project.class, id);
       if (entity == null)
       {
          return Response.status(Status.NOT_FOUND).build();
@@ -58,9 +58,9 @@ public class UserEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<User> findByIdQuery = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.metaProjects LEFT JOIN FETCH u.projects WHERE u.id = :entityId ORDER BY u.id", User.class);
+      TypedQuery<Project> findByIdQuery = em.createQuery("SELECT DISTINCT p FROM Project p LEFT JOIN FETCH p.metaproject LEFT JOIN FETCH p.members WHERE p.id = :entityId ORDER BY p.id", Project.class);
       findByIdQuery.setParameter("entityId", id);
-      User entity;
+      Project entity;
       try
       {
          entity = findByIdQuery.getSingleResult();
@@ -78,9 +78,9 @@ public class UserEndpoint
 
    @GET
    @Produces("application/json")
-   public List<User> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public List<Project> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<User> findAllQuery = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.metaProjects LEFT JOIN FETCH u.projects ORDER BY u.id", User.class);
+      TypedQuery<Project> findAllQuery = em.createQuery("SELECT DISTINCT p FROM Project p LEFT JOIN FETCH p.metaproject LEFT JOIN FETCH p.members ORDER BY p.id", Project.class);
       if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);
@@ -89,14 +89,14 @@ public class UserEndpoint
       {
          findAllQuery.setMaxResults(maxResult);
       }
-      final List<User> results = findAllQuery.getResultList();
+      final List<Project> results = findAllQuery.getResultList();
       return results;
    }
 
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")
-   public Response update(@PathParam("id") Long id, User entity)
+   public Response update(@PathParam("id") Long id, Project entity)
    {
       if (entity == null)
       {
@@ -106,7 +106,7 @@ public class UserEndpoint
       {
          return Response.status(Status.CONFLICT).entity(entity).build();
       }
-      if (em.find(User.class, id) == null)
+      if (em.find(Project.class, id) == null)
       {
          return Response.status(Status.NOT_FOUND).build();
       }
