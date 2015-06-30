@@ -58,7 +58,7 @@ public class MetaProjectEndpoint
    @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<MetaProject> findByIdQuery = em.createQuery("SELECT DISTINCT m FROM MetaProject m LEFT JOIN FETCH m.leader LEFT JOIN FETCH m.metaProjects WHERE m.id = :entityId ORDER BY m.id", MetaProject.class);
+      TypedQuery<MetaProject> findByIdQuery = em.createQuery("SELECT DISTINCT m FROM MetaProject m LEFT JOIN FETCH m.leader LEFT JOIN FETCH m.projects WHERE m.id = :entityId ORDER BY m.id", MetaProject.class);
       findByIdQuery.setParameter("entityId", id);
       MetaProject entity;
       try
@@ -80,7 +80,7 @@ public class MetaProjectEndpoint
    @Produces("application/json")
    public List<MetaProject> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<MetaProject> findAllQuery = em.createQuery("SELECT DISTINCT m FROM MetaProject m LEFT JOIN FETCH m.leader LEFT JOIN FETCH m.metaProjects ORDER BY m.id", MetaProject.class);
+      TypedQuery<MetaProject> findAllQuery = em.createQuery("SELECT DISTINCT m FROM MetaProject m LEFT JOIN FETCH m.leader LEFT JOIN FETCH m.projects ORDER BY m.id", MetaProject.class);
       if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);

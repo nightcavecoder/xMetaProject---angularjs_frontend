@@ -1,7 +1,6 @@
 package org.jboss.tools.xMetaProject.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -40,10 +39,18 @@ public class MetaProject implements Serializable
    @ManyToOne
    private User leader;
    
-   @OneToMany(mappedBy="metaproject")
-   private Collection<Project> metaProjects = new HashSet<Project>();
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "metaproject")
+   private Collection<Project> projects = new HashSet<Project>();
+   
+   public Collection<Project> getProjects() {
+	return projects;
+}
 
-   public Long getId()
+public void setProjects(Collection<Project> projects) {
+	this.projects = projects;
+}
+
+public Long getId()
    {
       return id;
    }

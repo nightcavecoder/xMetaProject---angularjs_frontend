@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -39,10 +40,10 @@ public class User implements Serializable
    @NotNull
    private String password;
 
-   @OneToMany(mappedBy="leader")
+   @OneToMany(mappedBy="leader", cascade=CascadeType.ALL)
    private Collection<MetaProject> metaProjects = new HashSet<MetaProject>();
    
-   @ManyToMany(mappedBy="members")
+   @ManyToMany(mappedBy="members", cascade=CascadeType.ALL)
    private Collection<Project> projects = new HashSet<Project>();
 
 	public Long getId() {

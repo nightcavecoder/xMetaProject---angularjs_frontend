@@ -11,7 +11,6 @@ angular.module('xMetaProjectApp')
     $httpBackend.whenGET('metaproject/metaProjectView_detail.html').passThrough();
     $httpBackend.whenGET('project/projectView_list.html').passThrough();
 
-
     $httpBackend.whenGET('/metaprojects').respond(function(method, url, data){
       var metaProjects = fake_database_metaProject.getAll();
       console.log(metaProjects);
@@ -33,10 +32,9 @@ angular.module('xMetaProjectApp')
       {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
       {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
       {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
-      {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'},
+      {id: 1, title:'test Project', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. Muster'}
     ]);
 
     $httpBackend.whenGET('/metaprojects/new').passThrough();
     $httpBackend.whenGET('/\/metaprojects\/\d').passThrough();
-
   }]);

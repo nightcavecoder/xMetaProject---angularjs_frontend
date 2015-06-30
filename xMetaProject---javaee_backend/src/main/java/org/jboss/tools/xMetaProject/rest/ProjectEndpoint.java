@@ -1,5 +1,7 @@
 package org.jboss.tools.xMetaProject.rest;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -20,7 +22,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
+import org.jboss.tools.xMetaProject.dto.ProjectDto;
+import org.jboss.tools.xMetaProject.dto.UserDto;
 import org.jboss.tools.xMetaProject.model.Project;
+import org.jboss.tools.xMetaProject.model.User;
 
 /**
  * 
@@ -78,10 +84,13 @@ public class ProjectEndpoint
 
    @GET
    @Produces("application/json")
-   public List<Project> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public Response listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<Project> findAllQuery = em.createQuery("SELECT DISTINCT p FROM Project p LEFT JOIN FETCH p.metaproject LEFT JOIN FETCH p.members ORDER BY p.id", Project.class);
-      if (startPosition != null)
+	   TypedQuery<Project> findAllQuery = em.createQuery("SELECT DISTINCT p FROM Project p LEFT JOIN FETCH p.metaproject JOIN p.members m", Project.class);
+      
+	   
+	   
+	   if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);
       }
@@ -90,7 +99,26 @@ public class ProjectEndpoint
          findAllQuery.setMaxResults(maxResult);
       }
       final List<Project> results = findAllQuery.getResultList();
-      return results;
+      Collection<ProjectDto> dtos = new HashSet<ProjectDto>();
+      for(Project project:results){
+    	  ProjectDto dto = new ProjectDto();
+    	  dto.setId(project.getId());
+    	  dto.setTitle(project.getTitle());
+    	  dto.setDescription(project.getDescription());
+    	  dto.setMetaprojectid(project.getMetaproject().getId());
+    	  dto.setMetaprojectname(project.getMetaproject().getTitle());
+    	  
+    	  Collection<UserDto>members = new HashSet<UserDto>();
+    	  for(User user : project.getMembers()){
+    		  UserDto userDto = new UserDto();
+    		  userDto.setId(user.getId());
+    		  userDto.setName(user.getUserName());
+    		  members.add(userDto);
+    	  }
+    	  dto.setMembers(members);
+    	  dtos.add(dto);
+      }
+      return Response.ok(dtos).build();
    }
 
    @PUT

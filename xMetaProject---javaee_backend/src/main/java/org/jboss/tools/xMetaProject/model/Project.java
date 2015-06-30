@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,13 +34,28 @@ public class Project implements Serializable
    private String title;
 
    private String description;
-
-   @ManyToOne
-   private User metaproject;
    
+   @ManyToOne(optional = false)
+   @JoinColumn(name="metaproject", referencedColumnName="id")
+   private MetaProject metaproject;
+   
+   public MetaProject getMetaproject() {
+	return metaproject;
+}
 
-   @ManyToMany
-   @JoinTable
+public void setMetaproject(MetaProject metaproject) {
+	this.metaproject = metaproject;
+}
+
+public Collection<User> getMembers() {
+	return members;
+}
+
+public void setMembers(Collection<User> members) {
+	this.members = members;
+}
+
+@ManyToMany()
    private Collection<User> members = new HashSet<User>();
 
    public Long getId()

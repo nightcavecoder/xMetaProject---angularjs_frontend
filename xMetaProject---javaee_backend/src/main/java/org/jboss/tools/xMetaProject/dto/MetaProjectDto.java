@@ -1,10 +1,15 @@
 package org.jboss.tools.xMetaProject.dto;
 
 public class MetaProjectDto {
+	
+	
+	private Long id;
 	private String title;
 	private String courseOfStudies;
 	private String semester;
+	private Long leaderid;
 	private String leader;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -28,5 +33,19 @@ public class MetaProjectDto {
 	}
 	public void setLeader(String leader) {
 		this.leader = leader;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getLeaderid() {
+		return leaderid;
+	}
+
+	public void setLeaderid(Long leaderid) {
+		this.leaderid = leaderid;
 	}
 }
