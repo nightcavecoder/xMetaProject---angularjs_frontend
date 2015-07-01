@@ -1,0 +1,31 @@
+<ul class="breadcrumb">
+  <li ui-sref="metaProjectList">MetaProjects</li>
+  <li ng-hide="$state.current.name === 'metaProjectDetail'" class="active">{{metaproject.title}}</li>
+  <li ng-show="$state.current.name === 'metaProjectNew'" class="active">New</li>
+</ul>
+
+<form novalidate class="simple-form">
+
+  Project: <br>
+  <input type="text" ng-model="project.title"> <br>
+  Description: <br>
+  <input type="text" ng-model="project.description"> <br>
+  Members: <br>
+      <div ng-repeat="member in project.members">
+        <div ng-bind="member.name" ng-click="fireMember($index)"></div>
+      </div>
+  AllUser:
+      <div ng-repeat="user in users" >
+        <div ng-bind="user.name" ng-click="hireMember($index)"></div>
+      </div>
+
+  <button>Save</button>
+  <button>Cancel</button>
+
+  <button>Edit</button>
+</form>
+
+
+
+
+
