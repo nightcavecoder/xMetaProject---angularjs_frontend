@@ -6,83 +6,43 @@
 
 angular.module('module_project')
 
-  .controller('projectCtrl_detail', ['$scope', '$state', '$filter','$stateParams', 'projectResource', 'userResource', function($scope, $state, $filter, $stateParams, projectResource, userResource){
-
-    //console.log('projectCtrl_list ' + $stateParams.metaprojectid);
-    $scope.project = {};
-    $scope.users = {};
-    $scope.clickableUsers = {};
-    var tusers = {};
-
-
-    //it should give us all the projects from the REST-Service
-    $scope.getProject = function (){
-      var successCallback = function (){
-
+  .controller('projectCtrl_detail', ['$scope', '$state', '$filter','$stateParams', 'projectResource', 'userResource',  function($scope, $state, $filter, $stateParams, projectResource, userResource){
+    //$scope.project = {};
+    //$scope.users = {};
+    var project;
+    var users;
+    var init = function (){
+      var getProject=function(){
+        var suc = function(data){
+          project = data;
+          getUser();
+          //console.log(project)
+        };
+        var err = function(){console.log('error')};
+        projectResource.get({mid: $stateParams.metaprojectid, id: $stateParams.projectid}, suc, err);
       };
-      var errorCallback = function(){
-        //console.log('error');
+      var getUser=function(){
+        var suc = function(data){
+          users = data;
+          validUsers();
+          $scope.project = project;
+          $scope.users=users;
+        };
+        var err = function(){console.log('error')};
+        userResource.getAll(suc, err);
       };
-      $scope.project = projectResource.get({mid:$stateParams.metaprojectid, id:$stateParams.projectid}, successCallback, errorCallback);
-    };
-
-    //call this function now!
-
-    var getUsers = function(){
-      var successCallback = function(data){
-        console.log("SUCCESS");
-
-      };
-      var errorCallback = function(){
-        console.log("ERROR");
-      };
-      console.log('DO SOMETHING');
-
-      tusers = userResource.getAll(successCallback, errorCallback);
-    };
-    //$scope.users = userResource.getAll();
-
-
-
-
-    $scope.availableUsers = function() {
-      //console.log($scope.project);
-      for(var user in $scope.project.members){
-        console.log('BLABLA');
-        if($scope.users.indexOf(user)){
-          console.log('BLABLA')
+      var validUsers = function(){
+        for(var i=0; i<users.length; i++){
+          var userGarbage;
+          for(var j=0; j<project.members.length; j++){
+            if(users.indexOf(users[i]) !== -1 && project.members[j].id == users[i].id){
+              console.log(users[i]);
+              users.splice(users.indexOf(users[i]), 1);
+            }
+          }
         }
-      }
+      };
+      getProject();
     };
-
-    $scope.availableUsers();
-
-    $scope.availableUsers = function(){
-      return $scope.users.filter(function(user){
-        //console.log( $scope.project.members + "  "+ $scope.members + "   " + user + " " + user.id);
-          console.log(user);
-          //console.log($scope.project.members.indexOf(user));
-        console.log($scope.project.members.indexOf(user));
-
-        if($scope.project.members.indexOf(user)){
-
-        }
-
-        return $scope.project.members.indexOf(user);
-      });
-    };
-
-    //$scope.fireMember = function(index){
-    //  $scope.users.push($scope.project.members[index]);
-    //  $scope.project.members.splice(index, 1);
-    //};
-    //
-    //$scope.hireMember = function(index){
-    //  $scope.project.members.push($scope.users[index]);
-    //  $scope.users.splice(index, 1);
-    //};
-
-    //getUsers();
-    $scope.getProject();
-    getUsers();
+    init();
   }]);
