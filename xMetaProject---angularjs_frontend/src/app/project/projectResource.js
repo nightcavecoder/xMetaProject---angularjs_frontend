@@ -8,8 +8,7 @@ angular.module('module_project')
 
   .factory('projectResource', ['$resource' ,function($resource){
 
-
-    var resource = $resource('/metaprojects/1/projects/2',
+    var resource = $resource('http://localhost:8080/xMetaProject---javaee_backend/rest/metaprojects/:mid/projects/:id',
       {
 
       },

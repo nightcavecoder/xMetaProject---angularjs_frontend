@@ -65,4 +65,13 @@ angular.module('xMetaProjectApp')
             }
           }
         })
+        .state('projectDetail', {
+          url: '/metaprojects/:metaprojectid/projects/:projectid',
+          views: {
+            '': {
+              templateUrl: 'project/projectView_detail.html',
+              controller: 'projectCtrl_detail'
+            }
+          }
+        })
     }]);

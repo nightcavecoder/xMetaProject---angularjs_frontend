@@ -10,7 +10,7 @@ angular.module('module_metaProject')
 
   .factory('metaProjectResource', ['$resource', '$http' ,function($resource, $http){
 
-    var resource = $resource('/metaprojects/:id',
+    var resource = $resource('http://localhost:8080/xMetaProject---javaee_backend/rest/metaprojects/:id',
 
         {id:''}
      ,

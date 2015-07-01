@@ -32,7 +32,7 @@ import org.jboss.tools.xMetaProject.model.User;
  * 
  */
 @Stateless
-@Path("/projects")
+@Path("/metaprojects/{mid}/projects")
 public class ProjectEndpoint
 {
    @PersistenceContext(unitName = "xMetaProject---javaee_backend-persistence-unit")
@@ -79,17 +79,31 @@ public class ProjectEndpoint
       {
          return Response.status(Status.NOT_FOUND).build();
       }
-      return Response.ok(entity).build();
+      
+      ProjectDto dto = new ProjectDto();
+      dto.setId(entity.getId());
+      dto.setTitle(entity.getTitle());
+      dto.setDescription(entity.getDescription());
+      dto.setMetaprojectid(entity.getMetaproject().getId());
+      dto.setMetaprojectname(entity.getMetaproject().getTitle());
+      Collection <UserDto> userDtos = new HashSet<UserDto>();
+      for(User user : entity.getMembers()){
+    	  UserDto userDto = new UserDto();
+    	  userDto.setId(user.getId());
+    	  userDto.setName(user.getUserName());
+    	  userDtos.add(userDto);
+      }
+      dto.setMembers(userDtos);
+
+      return Response.ok(dto).build();
    }
 
    @GET
    @Produces("application/json")
-   public Response listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public Response listAll(@PathParam("mid") Long mid, @QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-	   TypedQuery<Project> findAllQuery = em.createQuery("SELECT DISTINCT p FROM Project p LEFT JOIN FETCH p.metaproject JOIN p.members m", Project.class);
+	   TypedQuery<Project> findAllQuery = em.createQuery("SELECT DISTINCT p FROM Project p LEFT JOIN FETCH p.metaproject mp JOIN p.members m WHERE mp.id=:mid", Project.class).setParameter("mid", mid);
       
-	   
-	   
 	   if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);

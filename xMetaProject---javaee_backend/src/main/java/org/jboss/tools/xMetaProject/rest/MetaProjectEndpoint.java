@@ -1,5 +1,7 @@
 package org.jboss.tools.xMetaProject.rest;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -20,7 +22,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
+import org.jboss.tools.xMetaProject.dto.MetaProjectDto;
 import org.jboss.tools.xMetaProject.model.MetaProject;
+
+import com.sun.corba.se.impl.encoding.OSFCodeSetRegistry.Entry;
 
 /**
  * 
@@ -73,12 +79,21 @@ public class MetaProjectEndpoint
       {
          return Response.status(Status.NOT_FOUND).build();
       }
-      return Response.ok(entity).build();
+      MetaProjectDto dto = new MetaProjectDto();
+      dto.setId(entity.getId());
+      dto.setTitle(entity.getTitle());
+      dto.setCourseOfStudies(entity.getCourseOfStudies());
+      dto.setSemester(entity.getSemester());
+      dto.setLeaderid(entity.getLeader().getId());
+      dto.setLeader(entity.getLeader().getUserName());
+      
+      
+      return Response.ok(dto).build();
    }
 
    @GET
    @Produces("application/json")
-   public List<MetaProject> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public Response listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
       TypedQuery<MetaProject> findAllQuery = em.createQuery("SELECT DISTINCT m FROM MetaProject m LEFT JOIN FETCH m.leader LEFT JOIN FETCH m.projects ORDER BY m.id", MetaProject.class);
       if (startPosition != null)
@@ -90,7 +105,18 @@ public class MetaProjectEndpoint
          findAllQuery.setMaxResults(maxResult);
       }
       final List<MetaProject> results = findAllQuery.getResultList();
-      return results;
+      Collection<MetaProjectDto> dtos = new HashSet<MetaProjectDto>();
+      for(MetaProject metaProject:results){
+    	  MetaProjectDto dto = new MetaProjectDto();
+    	  dto.setId(metaProject.getId());
+    	  dto.setTitle(metaProject.getTitle());
+    	  dto.setCourseOfStudies(metaProject.getCourseOfStudies());
+    	  dto.setSemester(metaProject.getSemester());
+    	  dto.setLeaderid(metaProject.getLeader().getId());
+    	  dto.setLeader(metaProject.getLeader().getUserName());
+    	  dtos.add(dto);
+      }
+      return Response.ok(dtos).build();
    }
 
    @PUT

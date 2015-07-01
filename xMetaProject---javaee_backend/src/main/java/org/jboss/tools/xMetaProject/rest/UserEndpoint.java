@@ -1,5 +1,7 @@
 package org.jboss.tools.xMetaProject.rest;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -20,7 +22,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
 import org.jboss.tools.xMetaProject.model.User;
+import org.jboss.tools.xMetaProject.dto.UserDto;
 
 /**
  * 
@@ -78,9 +82,9 @@ public class UserEndpoint
 
    @GET
    @Produces("application/json")
-   public List<User> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
+   public Response listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult)
    {
-      TypedQuery<User> findAllQuery = em.createQuery("SELECT DISTINCT u FROM User u LEFT JOIN FETCH u.metaProjects LEFT JOIN FETCH u.projects ORDER BY u.id", User.class);
+      TypedQuery<User> findAllQuery = em.createQuery("SELECT DISTINCT u FROM User u ORDER BY u.id", User.class);
       if (startPosition != null)
       {
          findAllQuery.setFirstResult(startPosition);
@@ -90,7 +94,16 @@ public class UserEndpoint
          findAllQuery.setMaxResults(maxResult);
       }
       final List<User> results = findAllQuery.getResultList();
-      return results;
+      Collection<UserDto> dtos = new HashSet<UserDto>();
+      
+      for(User user: results){
+    	  UserDto dto = new UserDto();
+    	  dto.setId(user.getId());
+    	  dto.setName(user.getUserName());
+    	  dtos.add(dto);
+      }
+      
+      return Response.ok(dtos).build();
    }
 
    @PUT

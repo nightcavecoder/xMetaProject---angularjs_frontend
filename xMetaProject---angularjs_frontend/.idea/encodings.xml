@@ -23,10 +23,13 @@
     <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectView_list.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/metaproject/metaProjectView_new.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectConfig.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/project/projectCtrl_detail.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectCtrl_list.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectResource.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/project/projectView_detail.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectView_list.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/route.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/user/userResource.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/fake_backend/dummy.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/fake_backend/fake_backend_metaProject.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/mock/stateMock.js" charset="UTF-8" />
