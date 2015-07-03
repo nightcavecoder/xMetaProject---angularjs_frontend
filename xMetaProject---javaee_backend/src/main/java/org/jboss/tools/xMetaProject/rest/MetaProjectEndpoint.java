@@ -24,7 +24,9 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
 import org.jboss.tools.xMetaProject.dto.MetaProjectDto;
+import org.jboss.tools.xMetaProject.dto.UserDto;
 import org.jboss.tools.xMetaProject.model.MetaProject;
+import org.jboss.tools.xMetaProject.model.User;
 
 import com.sun.corba.se.impl.encoding.OSFCodeSetRegistry.Entry;
 
@@ -40,10 +42,36 @@ public class MetaProjectEndpoint
 
    @POST
    @Consumes("application/json")
-   public Response create(MetaProject entity)
+   public Response create(MetaProjectDto dto)
    {
+	   System.out.println("---------------");
+	   System.out.println(dto.getTitle());
+	   System.out.println(dto.getCourseOfStudies());
+	   System.out.println(dto.getSemester());
+	   System.out.println(dto.getSemester());
+	   System.out.println(dto.getLeader());
+	   System.out.println("---------------");
+	   
+	   MetaProject entity = new MetaProject();
+//	   entity.setId(2222l);
+	   entity.setTitle(dto.getTitle());
+	   entity.setCourseOfStudies(dto.getCourseOfStudies());
+	   entity.setSemester(dto.getSemester());
+	   
+	   User user = new User();
+	   user = em.find(User.class, dto.getLeader().getId());
+	   
+	   entity.setLeader(user);
+//	   entity.setProjects(null);
+//	   entity.setLeader(user);
+	   
       em.persist(entity);
-      return Response.created(UriBuilder.fromResource(MetaProjectEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      em.flush();
+//      return Response.created(UriBuilder.fromResource(MetaProjectEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      
+      MetaProjectDto dto2 = new MetaProjectDto();
+      dto2.setId(entity.getId());
+      return Response.ok(dto2).build();
    }
 
    @DELETE
@@ -84,8 +112,12 @@ public class MetaProjectEndpoint
       dto.setTitle(entity.getTitle());
       dto.setCourseOfStudies(entity.getCourseOfStudies());
       dto.setSemester(entity.getSemester());
-      dto.setLeaderid(entity.getLeader().getId());
-      dto.setLeader(entity.getLeader().getUserName());
+      
+      UserDto userDto = new UserDto();
+      userDto.setId(entity.getLeader().getId());
+      userDto.setName(entity.getLeader().getUserName());
+    
+      dto.setLeader(userDto);
       
       
       return Response.ok(dto).build();
@@ -112,8 +144,15 @@ public class MetaProjectEndpoint
     	  dto.setTitle(metaProject.getTitle());
     	  dto.setCourseOfStudies(metaProject.getCourseOfStudies());
     	  dto.setSemester(metaProject.getSemester());
-    	  dto.setLeaderid(metaProject.getLeader().getId());
-    	  dto.setLeader(metaProject.getLeader().getUserName());
+    	  
+          UserDto userDto = new UserDto();
+          userDto.setId(metaProject.getLeader().getId());
+          userDto.setName(metaProject.getLeader().getUserName());
+        
+          dto.setLeader(userDto);
+    	  
+//    	  dto.setLeaderid(metaProject.getLeader().getId());
+//    	  dto.setLeader(metaProject.getLeader().getUserName());
     	  dtos.add(dto);
       }
       return Response.ok(dtos).build();
@@ -122,23 +161,31 @@ public class MetaProjectEndpoint
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")
-   public Response update(@PathParam("id") Long id, MetaProject entity)
+   public Response update(@PathParam("id") Long id, MetaProjectDto dto)
    {
-      if (entity == null)
+      if (dto == null)
       {
          return Response.status(Status.BAD_REQUEST).build();
       }
-      if (!id.equals(entity.getId()))
+      if (!id.equals(dto.getId()))
       {
-         return Response.status(Status.CONFLICT).entity(entity).build();
+         return Response.status(Status.CONFLICT).entity(dto).build();
       }
-      if (em.find(MetaProject.class, id) == null)
+      if (em.find(MetaProject.class, dto.getId()) == null)
       {
          return Response.status(Status.NOT_FOUND).build();
       }
       try
       {
-         entity = em.merge(entity);
+    	 
+    	  MetaProject entity = new MetaProject();
+    	  entity.setId(dto.getId());
+    	  entity.setTitle(dto.getTitle());
+    	  
+    	  User user = em.find(User.class, dto.getLeader().getId());
+
+    	  entity.setLeader(user);
+    	  entity = em.merge(entity);
       }
       catch (OptimisticLockException e)
       {

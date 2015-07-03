@@ -16,7 +16,6 @@ angular.module('module_project')
         var suc = function(data){
           project = data;
           getUser();
-          //console.log(project)
         };
         var err = function(){console.log('error')};
         projectResource.get({mid: $stateParams.metaprojectid, id: $stateParams.projectid}, suc, err);
@@ -32,12 +31,12 @@ angular.module('module_project')
         userResource.getAll(suc, err);
       };
       var validUsers = function(){
-        for(var i=0; i<users.length; i++){
-          var userGarbage;
-          for(var j=0; j<project.members.length; j++){
+        for(var j=0; j<project.members.length; j++){
+          for(var i=0; i<users.length; i++){
             if(users.indexOf(users[i]) !== -1 && project.members[j].id == users[i].id){
-              console.log(users[i]);
+              //console.log(users[i].name + " - " + project.members[j].name);
               users.splice(users.indexOf(users[i]), 1);
+              break;
             }
           }
         }
@@ -45,4 +44,14 @@ angular.module('module_project')
       getProject();
     };
     init();
+
+    $scope.fireMember = function(index){
+      $scope.users.push($scope.project.members[index]);
+      $scope.project.members.splice(index, 1);
+    };
+
+    $scope.hireMember = function(index){
+      $scope.project.members.push($scope.users[index]);
+      $scope.users.splice(index, 1);
+    };
   }]);

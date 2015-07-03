@@ -7,9 +7,14 @@ public class MetaProjectDto {
 	private String title;
 	private String courseOfStudies;
 	private String semester;
-	private Long leaderid;
-	private String leader;
+	private UserDto leader;
 	
+	public void setLeader(UserDto leader) {
+		this.leader = leader;
+	}
+	public UserDto getLeader() {
+		return leader;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -28,12 +33,7 @@ public class MetaProjectDto {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
-	public String getLeader() {
-		return leader;
-	}
-	public void setLeader(String leader) {
-		this.leader = leader;
-	}
+
 	public Long getId() {
 		return id;
 	}
@@ -41,11 +41,4 @@ public class MetaProjectDto {
 		this.id = id;
 	}
 
-	public Long getLeaderid() {
-		return leaderid;
-	}
-
-	public void setLeaderid(Long leaderid) {
-		this.leaderid = leaderid;
-	}
 }

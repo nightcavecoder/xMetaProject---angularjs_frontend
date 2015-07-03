@@ -1,8 +1,8 @@
-<ul class="breadcrumb">
-  <li ui-sref="metaProjectList">MetaProjects</li>
-  <li ng-hide="$state.current.name === 'metaProjectDetail'" class="active">{{metaproject.title}}</li>
-  <li ng-show="$state.current.name === 'metaProjectNew'" class="active">New</li>
-</ul>
+<!--<ul class="breadcrumb">-->
+  <!--<li ui-sref="metaProjectList">MetaProjects</li>-->
+  <!--<li ng-hide="$state.current.name === 'metaProjectDetail'" class="active">{{metaproject.title}}</li>-->
+  <!--<li ng-show="$state.current.name === 'metaProjectNew'" class="active">New</li>-->
+<!--</ul>-->
 
 <form novalidate class="simple-form">
 
@@ -12,11 +12,11 @@
   <input type="text" ng-model="project.description"> <br>
   Members: <br>
       <div ng-repeat="member in project.members">
-        <div ng-bind="member.name" ng-click="fireMember($index)"></div>
+        <div ng-bind="member.name" ng-dblclick="fireMember($index)"></div>
       </div>
   AllUser:
       <div ng-repeat="user in users" >
-        <div ng-bind="user.name" ng-click="hireMember($index)"></div>
+        <div ng-bind="user.name" ng-dblclick="hireMember($index)"></div>
       </div>
 
   <button>Save</button>

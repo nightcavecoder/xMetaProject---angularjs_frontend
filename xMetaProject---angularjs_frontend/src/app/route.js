@@ -57,10 +57,10 @@ angular.module('xMetaProjectApp')
         })
         .state('metaProjectNew', {
           //url: '/metaprojects/new',
-          url: '/metaprojectsnew',
+          url: '/create/metaproject',
           views: {
             '': {
-              templateUrl: 'metaproject/metaProjectView_new.html',
+              templateUrl: 'metaproject/metaProjectView_detail.html',
               controller: 'metaProjectCtrl_new'
             }
           }

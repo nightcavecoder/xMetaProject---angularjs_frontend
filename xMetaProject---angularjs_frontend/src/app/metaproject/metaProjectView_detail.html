@@ -13,12 +13,13 @@
   Semester: <br>
   <input type="text" ng-model="metaproject.semester"> <br>
   Leader: <br>
-  <input type="text" ng-model="metaproject.leader"> <br>
+  <input type="text" ng-model="metaproject.leader.name" readonly> <br>
+  <select ng-model="metaproject.leader" ng-options="user as user.name for user in users"></select>
 
-  <button>Save</button>
+  <button ng-click="createMetaProject()">Save</button>
   <button>Cancel</button>
 
-  <button>Edit</button>
+  <button ng-click="editMetaProject()">Edit</button>
   <button>Projects</button>
 
 </form>
