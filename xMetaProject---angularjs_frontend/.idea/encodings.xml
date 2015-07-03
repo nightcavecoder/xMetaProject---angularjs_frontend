@@ -26,6 +26,7 @@
     <file url="file://$PROJECT_DIR$/src/app/project/projectConfig.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectCtrl_detail.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectCtrl_list.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/app/project/projectCtrl_new.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectResource.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectView_detail.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/app/project/projectView_list.html" charset="UTF-8" />

@@ -25,6 +25,7 @@ import javax.ws.rs.core.UriBuilder;
 
 import org.jboss.tools.xMetaProject.dto.ProjectDto;
 import org.jboss.tools.xMetaProject.dto.UserDto;
+import org.jboss.tools.xMetaProject.model.MetaProject;
 import org.jboss.tools.xMetaProject.model.Project;
 import org.jboss.tools.xMetaProject.model.User;
 
@@ -40,10 +41,30 @@ public class ProjectEndpoint
 
    @POST
    @Consumes("application/json")
-   public Response create(Project entity)
+   public Response create(@PathParam("mid") Long mid ,ProjectDto dto)
    {
+	  Project entity = new Project();
+	  entity.setTitle(dto.getTitle());
+	  entity.setDescription(dto.getDescription());
+	  
+	  MetaProject metaproject = em.find(MetaProject.class, mid);
+	  entity.setMetaproject(metaproject);
+	  
+	  Collection<User> users = new HashSet<User>();
+	  
+	  for(UserDto userDto : dto.getMembers()){
+		  User user = em.find(User.class, userDto.getId());
+		  users.add(user);
+	  };
+	  
+	  entity.setMembers(users);
+	  
       em.persist(entity);
-      return Response.created(UriBuilder.fromResource(ProjectEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      
+      ProjectDto dto2 = new ProjectDto();
+      dto2.setId(entity.getId());
+      
+      return Response.ok(dto2).build();
    }
 
    @DELETE
@@ -138,15 +159,15 @@ public class ProjectEndpoint
    @PUT
    @Path("/{id:[0-9][0-9]*}")
    @Consumes("application/json")
-   public Response update(@PathParam("id") Long id, Project entity)
+   public Response update(@PathParam("id") Long id, ProjectDto dto)
    {
-      if (entity == null)
+      if (dto == null)
       {
          return Response.status(Status.BAD_REQUEST).build();
       }
-      if (!id.equals(entity.getId()))
+      if (!id.equals(dto.getId()))
       {
-         return Response.status(Status.CONFLICT).entity(entity).build();
+         return Response.status(Status.CONFLICT).entity(dto).build();
       }
       if (em.find(Project.class, id) == null)
       {
@@ -154,6 +175,24 @@ public class ProjectEndpoint
       }
       try
       {
+    	  
+    	  Project entity = new Project();
+    	  entity.setId(dto.getId());
+    	  entity.setTitle(dto.getTitle());
+    	  entity.setDescription(dto.getDescription());
+    	 
+    	  Collection <User> users = new HashSet<User>();
+    	  for(UserDto userDto : dto.getMembers()){
+    		  User user = em.find(User.class, userDto.getId());
+    		  users.add(user);
+    	  };
+    	  
+    	  MetaProject metaproject = em.find(MetaProject.class, dto.getMetaprojectid());
+    	  
+    	  entity.setMetaproject(metaproject);
+
+    	  entity.setMembers(users);
+
          entity = em.merge(entity);
       }
       catch (OptimisticLockException e)

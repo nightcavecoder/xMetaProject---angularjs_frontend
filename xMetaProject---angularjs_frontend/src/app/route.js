@@ -8,7 +8,9 @@
 
 angular.module('xMetaProjectApp')
 
-  .run(['$state',function($state){
+.run(['$rootScope', '$state', '$stateParams',function($rootScope, $state, $stateParams){
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
     $state.go('metaProjectList');
   }]
 )
@@ -57,11 +59,21 @@ angular.module('xMetaProjectApp')
         })
         .state('metaProjectNew', {
           //url: '/metaprojects/new',
-          url: '/create/metaproject',
+          url: '/metaprojects/create/new',
           views: {
             '': {
               templateUrl: 'metaproject/metaProjectView_detail.html',
               controller: 'metaProjectCtrl_new'
+            }
+          }
+        })
+        .state('projectNew', {
+          url: '/metaprojects/:metaprojectid/projects/create/new',
+          views: {
+            '': {
+
+              templateUrl: 'project/projectView_detail.html',
+              controller: 'projectCtrl_new'
             }
           }
         })

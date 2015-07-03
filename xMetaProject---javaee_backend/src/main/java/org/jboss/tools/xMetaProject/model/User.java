@@ -35,7 +35,7 @@ public class User implements Serializable
    private Long id;
 
    @NotNull
-   private String userName;
+   private String name;
 
    @NotNull
    private String password;
@@ -55,11 +55,11 @@ public class User implements Serializable
 	}
 	
 	public String getUserName() {
-		return userName;
+		return name;
 	}
 	
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.name = userName;
 	}
 	
 	public String getPassword() {

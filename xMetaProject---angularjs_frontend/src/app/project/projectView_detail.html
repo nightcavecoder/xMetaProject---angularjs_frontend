@@ -1,8 +1,4 @@
-<!--<ul class="breadcrumb">-->
-  <!--<li ui-sref="metaProjectList">MetaProjects</li>-->
-  <!--<li ng-hide="$state.current.name === 'metaProjectDetail'" class="active">{{metaproject.title}}</li>-->
-  <!--<li ng-show="$state.current.name === 'metaProjectNew'" class="active">New</li>-->
-<!--</ul>-->
+
 
 <form novalidate class="simple-form">
 
@@ -19,10 +15,8 @@
         <div ng-bind="user.name" ng-dblclick="hireMember($index)"></div>
       </div>
 
-  <button>Save</button>
-  <button>Cancel</button>
-
-  <button>Edit</button>
+  <button ng-show="$state.includes('projectNew')" ng-click="createProject()">Save</button>
+  <button ng-show="$state.includes('projectDetail')" ng-click="editProject()">Edit</button>
 </form>
 
 

@@ -54,4 +54,12 @@ angular.module('module_project')
       $scope.project.members.push($scope.users[index]);
       $scope.users.splice(index, 1);
     };
+
+    $scope.editProject = function(){
+      var suc = function(){
+        var id = $stateParams.metaprojectid;
+        $state.go('metaProjectDetail', { 'metaprojectid': id});
+      };
+      projectResource.edit({mid: $stateParams.metaprojectid, id: $stateParams.projectid}, $scope.project, suc);
+    }
   }]);

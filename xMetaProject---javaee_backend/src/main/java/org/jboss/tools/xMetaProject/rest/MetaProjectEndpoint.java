@@ -163,6 +163,8 @@ public class MetaProjectEndpoint
    @Consumes("application/json")
    public Response update(@PathParam("id") Long id, MetaProjectDto dto)
    {
+	 
+	  System.out.println(id);
       if (dto == null)
       {
          return Response.status(Status.BAD_REQUEST).build();
@@ -181,6 +183,8 @@ public class MetaProjectEndpoint
     	  MetaProject entity = new MetaProject();
     	  entity.setId(dto.getId());
     	  entity.setTitle(dto.getTitle());
+    	  entity.setCourseOfStudies(dto.getCourseOfStudies());
+    	  entity.setSemester(dto.getSemester());
     	  
     	  User user = em.find(User.class, dto.getLeader().getId());
 

@@ -20,7 +20,7 @@
         <td ui-sref="metaProjectDetail({metaprojectid:metaproject.id})">{{metaproject.title}}</td>
         <td>{{metaproject.courseOfStudies}}</td>
         <td>{{metaproject.semester}}</td>
-        <td>{{metaproject.leader}}</td>
+        <td>{{metaproject.leader.name}}</td>
       </tr>
     </table>
     <button ui-sref-active="active" class="btn btn-primary" ui-sref="metaProjectNew">new MetaProject</button>

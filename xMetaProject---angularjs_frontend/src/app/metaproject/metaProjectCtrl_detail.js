@@ -24,8 +24,7 @@ angular.module('module_metaProject')
     };
 
     $scope.editMetaProject = function(){
-
-      metaProjectResource.edit($scope.metaproject);
+      metaProjectResource.edit({id:$stateParams.metaprojectid} ,$scope.metaproject);
     };
 
     $scope.getMetaProject();
