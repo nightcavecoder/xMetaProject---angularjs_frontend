@@ -19,10 +19,10 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
 
-      'src/app/bower_components/angular/angular.js',
-      'src/app/bower_components/angular-ui-router/release/angular-ui-router.js',
-      'src/app/bower_components/angular-resource/angular-resource.js',
-      'src/app/bower_components/angular-mocks/angular-mocks.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-resource/angular-resource.js',
+      'bower_components/angular-mocks/angular-mocks.js',
 
       'src/app/metaproject/metaProjectView_list.html',
 

@@ -1,9 +1,10 @@
 
+<button ui-sref-active="active" class="btn btn-primary" ui-sref="projectNew({metaprojectid:$stateParams.metaprojectid})"><span class="glyphicon glyphicon-plus"></span> add Project</button>
   <table class="table table-striped table-hover ">
     <thead>
     <tr>
-      <th >title</th>
-      <th >description</th>
+      <th >Projects</th>
+      <th >Description</th>
     </tr>
     </thead>
 
@@ -12,9 +13,6 @@
       <td>{{project.description}}</td>
     </tr>
   </table>
-
-  <button ui-sref-active="active" class="btn btn-primary" ui-sref="projectNew({metaprojectid:$stateParams.metaprojectid})">new Project</button>
-
   <div ui-view="projectNew"></div>
 
 

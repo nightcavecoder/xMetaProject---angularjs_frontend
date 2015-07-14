@@ -10,17 +10,19 @@ angular.module('module_metaProject')
     console.log('metaprojctctrl detail ' + $stateParams.metaprojectid);
 
     $scope.metaproject = {};
+    $scope.metaproject.leader = {};
     $scope.users = userResource.getAll();
 
     //it should give us all the metaprojects from the REST-Service
     $scope.getMetaProject = function (){
       var successCallback = function (data){
-        $scope.metaprojects = data;
+        $scope.metaproject = data;
+        $scope.metaproject.leader = data.leader;
       };
       var errorCallback = function(){
 
       };
-      $scope.metaproject = metaProjectResource.get({id:$stateParams.metaprojectid}, successCallback, errorCallback);
+      metaProjectResource.get({id:$stateParams.metaprojectid}, successCallback, errorCallback);
     };
 
     $scope.editMetaProject = function(){
@@ -28,5 +30,19 @@ angular.module('module_metaProject')
     };
 
     $scope.getMetaProject();
+
+    $scope.selectedLeaderIndex = function(){
+      for(var i = 0; i < $scope.users.length; i++){
+        if(user[i].id == metaproject.leader.id){
+          return user[i].indexOf;
+        }
+      }
+    };
+
+    $scope.changeLeader = function(item){
+      console.log('TEST ' + item);
+      $scope.metaproject.leader = item;
+    };
+
 
   }]);

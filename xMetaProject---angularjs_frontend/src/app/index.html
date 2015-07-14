@@ -11,7 +11,7 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
@@ -25,16 +25,9 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">xMetaProject</a>
+            <a class="navbar-brand" ui-sref="metaProjectList">xMetaProject</a>
           </div>
-
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li><a><input type="text" ng-bind="login.username"></a></li>
-              <li><a><input type="password" ng-bind="login.password"></a></li>
-              <li><a><input type="button" ng-click="login()" value="Login"></a></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -57,11 +50,11 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
-    <script type="text/javascript" src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="../../bower_components/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="../../bower_components/angular-mocks/angular-mocks.js"></script>
 
     <script type="text/javascript" src="app.js"></script>
 
@@ -83,3 +76,5 @@
 
   </body>
 </html>
+
+

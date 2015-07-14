@@ -1,23 +1,27 @@
-<ul class="breadcrumb">
-  <li ui-sref="metaProjectList">MetaProjects</li>
-  <li ng-hide="$state.current.name === 'metaProjectDetail'" class="active">{{metaproject.title}}</li>
-  <li ng-show="$state.current.name === 'metaProjectNew'" class="active">New</li>
-</ul>
+<h1>Metaproject Detail</h1>
+
+<button class="btn btn-default" ui-sref="metaProjectList"><span class="glyphicon glyphicon-step-backward"></span> Back</button>
+<button class="btn btn-primary" ng-show="$state.includes('metaProjectDetail')" ng-click="editMetaProject()"><span class="glyphicon glyphicon-save"></span> Save Changes</button>
+<button class="btn btn-success" ng-show="$state.includes('metaProjectNew')" ng-click="createMetaProject()"><span class="glyphicon glyphicon-plus"></span> Save MetaProject</button>
 
 <form novalidate class="simple-form">
 
-  MetaProject: <br>
-  <input type="text" ng-model="metaproject.title"> <br>
-  Course of Studies: <br>
-  <input type="text" ng-model="metaproject.courseOfStudies"> <br>
-  Semester: <br>
-  <input type="text" ng-model="metaproject.semester"> <br>
-  Leader: <br>
-  <input type="text" ng-model="metaproject.leader.name" readonly> <br>
-  <select ng-model="metaproject.leader" ng-options="user as user.name for user in users"></select>
+  <div class="form-group">
+    <label for="title">Title*</label>
+    <input id="title" class="form-control" type="text" ng-model="metaproject.title">
+    <label for="courseOfStudies">Course Of Studies</label>
+    <input id="courseOfStudies" class="form-control" type="text" ng-model="metaproject.courseOfStudies">
+    <label for="semester">Semester</label>
+    <input id="semester" class="form-control" type="text" ng-model="metaproject.semester">
+    <label for="leader">Leader</label>
+    <select id="leader" ng-model="metaproject.leader" ng-options="user as user.name for user in users" class="form-control">
+      <option value="">{{metaproject.leader.name}}</option>
+    </select>
+  </div>
 
-  <button ng-show="$state.includes('metaProjectNew')" ng-click="createMetaProject()">Save</button>
-  <button ng-show="$state.includes('metaProjectDetail')">Edit</button>
 </form>
 
+
 <div ui-view="projectList"></div>
+
+

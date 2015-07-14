@@ -1,24 +1,43 @@
+<h1>Project Detail</h1>
 
+<button class="btn btn-default" ui-sref="metaProjectDetail({metaprojectid:$stateParams.metaprojectid})"><span class="glyphicon glyphicon-step-backward"></span> Back</button>
+<button class="btn btn-success" ng-show="$state.includes('projectNew')" ng-click="createProject()"><span class="glyphicon glyphicon-check"></span> Save Project</button>
+<button class="btn btn-primary" ng-show="$state.includes('projectDetail')" ng-click="editProject()"><span class="glyphicon glyphicon-download"></span> Save Changes</button>
 
 <form novalidate class="simple-form">
 
-  Project: <br>
-  <input type="text" ng-model="project.title"> <br>
-  Description: <br>
-  <input type="text" ng-model="project.description"> <br>
-  Members: <br>
-      <div ng-repeat="member in project.members">
-        <div ng-bind="member.name" ng-dblclick="fireMember($index)"></div>
-      </div>
-  AllUser:
-      <div ng-repeat="user in users" >
-        <div ng-bind="user.name" ng-dblclick="hireMember($index)"></div>
-      </div>
+  <div class="form-group">
+    <label for="pTitle">Title*</label>
+    <input class="form-control" id="pTitle" type="text" ng-model="project.title"> <br>
+    <label for="description">Description</label>
+    <input id="description" class="form-control" type="text" ng-model="project.description"> <br>
+  </div>
 
-  <button ng-show="$state.includes('projectNew')" ng-click="createProject()">Save</button>
-  <button ng-show="$state.includes('projectDetail')" ng-click="editProject()">Edit</button>
+  <div class="col-xs-6">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th >Project Members</th>
+      </tr>
+      </thead>
+        <tr ng-repeat="member in project.members">
+          <td ng-bind="member.name" ng-click="fireMember($index)"></td>
+        </tr>
+    </table>
+  </div>
+  <div class="col-xs-6">
+    <table class="table table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Available Members</th>
+      </tr>
+      </thead>
+        <tr ng-repeat="user in users" >
+          <td ng-bind="user.name" ng-click="hireMember($index)"></td>
+        </tr>
+    </table>
+  </div>
 </form>
-
 
 
 

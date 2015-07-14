@@ -21,14 +21,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.core.UriBuilder;
-
 import org.jboss.tools.xMetaProject.dto.MetaProjectDto;
 import org.jboss.tools.xMetaProject.dto.UserDto;
 import org.jboss.tools.xMetaProject.model.MetaProject;
 import org.jboss.tools.xMetaProject.model.User;
 
-import com.sun.corba.se.impl.encoding.OSFCodeSetRegistry.Entry;
 
 /**
  * 

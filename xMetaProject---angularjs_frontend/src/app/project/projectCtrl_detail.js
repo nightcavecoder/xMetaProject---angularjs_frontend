@@ -61,5 +61,5 @@ angular.module('module_project')
         $state.go('metaProjectDetail', { 'metaprojectid': id});
       };
       projectResource.edit({mid: $stateParams.metaprojectid, id: $stateParams.projectid}, $scope.project, suc);
-    }
+    };
   }]);

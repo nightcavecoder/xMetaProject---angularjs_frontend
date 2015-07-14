@@ -10,8 +10,3 @@ angular.module('xMetaProjectApp', [
   'module_project'
 ]);
 
-
-  //.config(function(){
-  //  //app config
-  //});
-

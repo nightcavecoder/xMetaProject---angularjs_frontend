@@ -27,9 +27,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class User implements Serializable
 {
-   /** Default value included to remove warning. Remove or modify at will. **/
-   private static final long serialVersionUID = 1L;
-
    @Id
    @GeneratedValue
    private Long id;
@@ -45,6 +42,9 @@ public class User implements Serializable
    
    @ManyToMany(mappedBy="members", cascade=CascadeType.ALL)
    private Collection<Project> projects = new HashSet<Project>();
+   
+   /** Default value included to remove warning. Remove or modify at will. **/
+   private static final long serialVersionUID = 1L;
 
 	public Long getId() {
 		return id;
