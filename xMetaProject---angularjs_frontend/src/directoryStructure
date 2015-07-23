@@ -1,0 +1,23 @@
+app/
+---------- components/
+-------------------- metaproject/
+------------------------------ metaProjectConfig.js
+------------------------------ metaProjectController_detail.js
+------------------------------ metaProjectController_list.js
+------------------------------ metaProjectController_new.js
+------------------------------ metaProjectResourceService.js
+------------------------------ metaProjectView_detail.html
+------------------------------ metaProjectView_list.html
+-------------------- project/
+------------------------------ projectConfig.js
+------------------------------ projectController_detail.js
+------------------------------ projectController_list.js
+------------------------------ projectController_new.js
+------------------------------ projectResourceService.js
+------------------------------ projectView_detail.html
+------------------------------ projectView_list.html
+-------------------- user/
+------------------------------ userResourceService.js
+---------- app.js
+---------- index.html
+---------- route.js

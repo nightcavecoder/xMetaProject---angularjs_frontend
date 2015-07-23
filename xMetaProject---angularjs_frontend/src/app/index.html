@@ -11,6 +11,10 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!--<link rel="import" href="components/metaproject/metaProjectView_detail.html">-->
+    <!--<link rel="import" href="components/metaproject/metaProjectView_list.html">-->
+    <!--<link rel="import" href="components/project/projectView_detail.html">-->
+    <!--<link rel="import" href="components/project/projectView_list.html">-->
     <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
 
     <div class="header">
@@ -51,26 +55,31 @@
     </script>
 
     <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="../../bower_components/angular/angular.js"></script>
     <script type="text/javascript" src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="../../bower_components/angular-resource/angular-resource.js"></script>
     <script type="text/javascript" src="../../bower_components/angular-mocks/angular-mocks.js"></script>
 
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="components/templates/templatesConfig.js"></script>
+    <script type="text/javascript" src="components/templates/templates.js"></script>
+    <script type="text/javascript" src="components/metaproject/metaProjectConfig.js"></script>
+    <script type="text/javascript" src="components/metaproject/metaProjectResourceService.js"></script>
+    <script type="text/javascript" src="components/metaproject/metaProjectController_list.js"></script>
+    <script type="text/javascript" src="components/metaproject/metaProjectController_detail.js"></script>
+    <script type="text/javascript" src="components/metaproject/metaProjectController_new.js"></script>
+    <script type="text/javascript" src="components/project/projectConfig.js"></script>
 
-    <script type="text/javascript" src="metaproject/metaProjectConfig.js"></script>
-    <script type="text/javascript" src="metaproject/metaProjectResource.js"></script>
-    <script type="text/javascript" src="metaproject/metaProjectCtrl_list.js"></script>
-    <script type="text/javascript" src="metaproject/metaProjectCtrl_detail.js"></script>
-    <script type="text/javascript" src="metaproject/metaProjectCtrl_new.js"></script>
+    <script type="text/javascript" src="components/project/projectController_list.js"></script>
+    <script type="text/javascript" src="components/project/projectController_detail.js"></script>
+    <script type="text/javascript" src="components/project/projectController_new.js"></script>
 
-    <script type="text/javascript" src="project/projectConfig.js"></script>
-    <script type="text/javascript" src="project/projectResource.js"></script>
-    <script type="text/javascript" src="project/projectCtrl_list.js"></script>
-    <script type="text/javascript" src="project/projectCtrl_detail.js"></script>
-    <script type="text/javascript" src="project/projectCtrl_new.js"></script>
+    <!--<script type="text/javascript" src="fake_backend/interceptor/interceptor.js"></script>-->
+    <!--<script type="text/javascript" src="fake_backend/metaproject/metaprojectResource.js"></script>-->
 
-    <script type="text/javascript" src="user/userResource.js"></script>
+    <script type="text/javascript" src="components/metaproject/metaProjectResourceService.js"></script>
+    <script type="text/javascript" src="components/project/projectResourceService.js"></script>
+    <script type="text/javascript" src="components/user/userResourceService.js"></script>
 
     <script type="text/javascript" src="route.js"></script>
 

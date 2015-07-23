@@ -1,9 +1,7 @@
 /**
  * Created by gionuwe on 10.06.2015.
  */
-/**
- * Created by gionuwe on 03.06.2015.
- */
+
 'use strict';
 
 angular.module('module_metaProject')

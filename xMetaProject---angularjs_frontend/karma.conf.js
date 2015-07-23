@@ -24,13 +24,13 @@ module.exports = function(config) {
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-mocks/angular-mocks.js',
 
-      'src/app/metaproject/metaProjectView_list.html',
+      'src/app/components/metaproject/metaProjectView_list.html',
 
       'src/app/app.js',
-      'src/app/metaproject/metaProjectConfig.js',
-      'src/app/metaproject/metaProjectResource.js',
-      'src/app/metaproject/metaProjectCtrl_list.js',
-      'src/app/metaproject/metaProjectCtrl_detail.js',
+      'src/app/components/metaproject/metaProjectConfig.js',
+      'src/app/components/metaproject/metaProjectResourceService.js',
+      'src/app/components/metaproject/metaProjectController_list.js',
+      'src/app/components/metaproject/metaProjectController_detail.js',
 
 
       //'src/test/mock/stateMock.js'

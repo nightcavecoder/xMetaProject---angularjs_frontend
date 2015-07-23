@@ -8,12 +8,7 @@
 
 angular.module('xMetaProjectApp')
 
-.run(['$rootScope', '$state', '$stateParams',function($rootScope, $state, $stateParams){
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
-    $state.go('metaProjectList');
-  }]
-)
+
 
   .config(
   ['$stateProvider', '$urlRouterProvider', '$urlMatcherFactoryProvider',
@@ -35,8 +30,10 @@ angular.module('xMetaProjectApp')
           url: '/metaprojects',
           views: {
             '': {
-              templateUrl: 'metaproject/metaProjectView_list.html',
-              controller: 'metaProjectCtrl_list'
+              templateProvider: function($templateCache) {
+                return $templateCache.get('metaproject/metaProjectView_list.html');
+              },
+                controller: 'metaProjectCtrl_list'
             }
             }
         })
@@ -48,11 +45,14 @@ angular.module('xMetaProjectApp')
             }},
           views: {
             '': {
-              templateUrl: 'metaproject/metaProjectView_detail.html',
+              templateProvider: function($templateCache) {
+                return $templateCache.get('metaproject/metaProjectView_detail.html');
+              },
+              //templateProvider: function($templateCache){return $templateCache.get('metaproject/metaProjectView_detail.html');},
               controller: 'metaProjectCtrl_detail'
             },
             'projectList': {
-              templateUrl: 'project/projectView_list.html',
+              templateUrl: 'components/project/projectView_list.html',
               controller: 'projectCtrl_list'
             }
           }
@@ -62,7 +62,9 @@ angular.module('xMetaProjectApp')
           url: '/metaprojects/create/new',
           views: {
             '': {
-              templateUrl: 'metaproject/metaProjectView_detail.html',
+              templateProvider: function($templateCache) {
+                return $templateCache.get('project/projectView_detail.html');
+              },
               controller: 'metaProjectCtrl_new'
             }
           }
@@ -72,7 +74,9 @@ angular.module('xMetaProjectApp')
           views: {
             '': {
 
-              templateUrl: 'project/projectView_detail.html',
+              templateProvider: function($templateCache) {
+                return $templateCache.get('project/projectView_list.html');
+              },
               controller: 'projectCtrl_new'
             }
           }
@@ -81,7 +85,9 @@ angular.module('xMetaProjectApp')
           url: '/metaprojects/:metaprojectid/projects/:projectid',
           views: {
             '': {
-              templateUrl: 'project/projectView_detail.html',
+              templateProvider: function($templateCache) {
+                return $templateCache.get('project/projectView_detail.html');
+              },
               controller: 'projectCtrl_detail'
             }
           }

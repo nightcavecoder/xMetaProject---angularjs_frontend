@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var gutil = require('gulp-util');
 var wrench = require('wrench');
 var karma = require('karma').server;
+var templateCache = require('gulp-angular-templatecache');
 //var browserSync = require('browser-sync').create();
 //var concat = require('gulp-concat');
 //var jasmine = require('gulp-jasmine');
@@ -38,6 +39,12 @@ gulp.task('browser-sync', function() {
       baseDir: "./"
     }
   });
+});
+
+gulp.task('tpl', function () {
+  return gulp.src('src/app/components/**/*.html')
+    .pipe(templateCache())
+    .pipe(gulp.dest('src/app/components/templates'));
 });
 
 gulp.task('default', ['clean'], function () {
