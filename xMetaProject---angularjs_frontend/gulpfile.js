@@ -10,7 +10,7 @@ var templateCache = require('gulp-angular-templatecache');
 //var jasmine = require('gulp-jasmine');
 
 var options = {
-  src: 'src',
+  src: 'src/app',
   dist: 'dist',
   tmp: '.tmp',
   e2e: 'e2e',
