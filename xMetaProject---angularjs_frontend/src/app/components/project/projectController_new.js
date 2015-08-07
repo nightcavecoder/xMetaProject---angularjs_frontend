@@ -6,6 +6,9 @@
 angular.module('module_project')
 
   .controller('projectCtrl_new', ['$scope', '$state', '$filter','$stateParams', 'projectResource', 'userResource',  function($scope, $state, $filter, $stateParams, projectResource, userResource){
+
+    console.log('module_project.controller');
+
     $scope.project = {};
     $scope.project.members = [];
     $scope.users = {};
@@ -39,3 +42,4 @@ angular.module('module_project')
 
     getAllUsers();
   }]);
+

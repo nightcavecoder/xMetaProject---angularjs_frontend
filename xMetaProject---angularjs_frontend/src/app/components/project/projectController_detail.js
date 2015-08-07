@@ -7,8 +7,9 @@
 angular.module('module_project')
 
   .controller('projectCtrl_detail', ['$scope', '$state', '$filter','$stateParams', 'projectResource', 'userResource',  function($scope, $state, $filter, $stateParams, projectResource, userResource){
-    //$scope.project = {};
-    //$scope.users = {};
+
+    console.log('module_project.controller');
+
     var project;
     var users;
     var init = function (){

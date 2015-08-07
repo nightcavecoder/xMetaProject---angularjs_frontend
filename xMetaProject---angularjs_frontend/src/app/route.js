@@ -6,7 +6,7 @@
  */
 "use strict";
 
-angular.module('xMetaProjectApp')
+angular.module('module_app')
 
 
 
@@ -15,8 +15,9 @@ angular.module('xMetaProjectApp')
     function ($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
 
       //console.log('metaProject Config');
-      //console.log($templateCache.info());
-
+      console.log('module_app.config');
+      //var d = new Date();
+      //console.log( 'Minute/Milliseconds [' + d.getMinutes() + '/' + d.getMilliseconds() +'] module_app.config');
 
       //$urlRouterProvider
       ////  .when('/metaprojects', '/metaprojects')
@@ -45,14 +46,16 @@ angular.module('xMetaProjectApp')
             }},
           views: {
             '': {
+
               templateProvider: function($templateCache) {
                 return $templateCache.get('metaproject/metaProjectView_detail.html');
               },
-              //templateProvider: function($templateCache){return $templateCache.get('metaproject/metaProjectView_detail.html');},
               controller: 'metaProjectCtrl_detail'
             },
             'projectList': {
-              templateUrl: 'components/project/projectView_list.html',
+              templateProvider: function($templateCache) {
+                return $templateCache.get('project/projectView_list.html');
+              },
               controller: 'projectCtrl_list'
             }
           }

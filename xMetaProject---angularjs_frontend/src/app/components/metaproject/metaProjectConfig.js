@@ -4,7 +4,14 @@
 "use strict";
 
 angular.module('module_metaProject', [
-  'ui.router',
-  'ngResource'
+
   ]
-);
+)
+
+  .config(function() {
+    console.log('module_metaProject.config');
+  })
+.run(function() {
+  console.log('module_metaProject.run');
+});
+

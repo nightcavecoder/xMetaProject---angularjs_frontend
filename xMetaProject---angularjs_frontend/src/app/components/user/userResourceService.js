@@ -3,9 +3,12 @@
  */
 'use strict';
 
-angular.module('xMetaProjectApp')
+angular.module('module_user')
 
   .factory('userResource', ['$resource' ,function($resource){
+
+    var d = new Date();
+    console.log( 'Minute/Milliseconds [' + d.getMinutes() + '/' + d.getMilliseconds() +'] module_user.factory');
 
     var resource = $resource('http://localhost:8080/xMetaProject---javaee_backend/rest/users',
       {

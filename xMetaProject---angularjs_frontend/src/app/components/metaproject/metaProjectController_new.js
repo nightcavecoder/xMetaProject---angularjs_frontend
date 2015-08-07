@@ -6,6 +6,9 @@
 angular.module('module_metaProject')
 
   .controller('metaProjectCtrl_new', ['$scope', '$state','metaProjectResource', 'userResource', function($scope, $state, metaProjectResource, userResource){
+
+      console.log('module_metaProject.controller');
+
       $scope.metaproject = {};
       $scope.users = userResource.getAll();
 

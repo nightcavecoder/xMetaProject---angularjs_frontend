@@ -1,31 +1,23 @@
 <!doctype html>
-<html ng-app="xMetaProjectApp">
+
+<html ng-app="module_app">
+
   <head>
     <meta charset="utf-8">
     <title>xMetaProjectApp</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-
   </head>
+
   <body>
-    <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css">
-
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
-
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-
             <a class="navbar-brand" ui-sref="metaProjectList">xMetaProject</a>
           </div>
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -33,15 +25,10 @@
         </div>
       </div>
     </div>
-
     <div class="container">
-
-
       <div ui-view=""></div>
       <div ui-view="projectList"></div>
-
     </div>
-
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -50,13 +37,11 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
-
-    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="../../bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="../../bower_components/angular-resource/angular-resource.js"></script>
-    <script type="text/javascript" src="../../bower_components/angular-mocks/angular-mocks.js"></script>
-
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="components/templates/templatesConfig.js"></script>
     <script type="text/javascript" src="components/templates/templates.js"></script>
@@ -66,18 +51,14 @@
     <script type="text/javascript" src="components/metaproject/metaProjectController_detail.js"></script>
     <script type="text/javascript" src="components/metaproject/metaProjectController_new.js"></script>
     <script type="text/javascript" src="components/project/projectConfig.js"></script>
-
     <script type="text/javascript" src="components/project/projectController_list.js"></script>
     <script type="text/javascript" src="components/project/projectController_detail.js"></script>
     <script type="text/javascript" src="components/project/projectController_new.js"></script>
-
-    <!--<script type="text/javascript" src="fake_backend/interceptor/interceptor.js"></script>-->
-    <!--<script type="text/javascript" src="fake_backend/metaproject/metaprojectResource.js"></script>-->
-
+    <!--<script type="text/javascript" src="components/project/projectDirective_disjointLists.js"></script>-->
     <script type="text/javascript" src="components/metaproject/metaProjectResourceService.js"></script>
     <script type="text/javascript" src="components/project/projectResourceService.js"></script>
+    <script type="text/javascript" src="components/user/userConfig.js"></script>
     <script type="text/javascript" src="components/user/userResourceService.js"></script>
-
     <script type="text/javascript" src="route.js"></script>
 
   </body>

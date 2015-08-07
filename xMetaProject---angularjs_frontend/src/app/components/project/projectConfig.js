@@ -7,7 +7,14 @@
 "use strict";
 
 angular.module('module_project', [
-  'ui.router',
-  'ngResource'
-]);
+
+])
+
+  .config(function() {
+    console.log('module_project.config');
+  })
+.run(function() {
+  console.log('module_project.run');
+});
+
 

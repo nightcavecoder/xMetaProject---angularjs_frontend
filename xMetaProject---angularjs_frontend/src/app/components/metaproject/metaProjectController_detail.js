@@ -7,7 +7,7 @@ angular.module('module_metaProject')
 
   .controller('metaProjectCtrl_detail', ['$scope', '$state','$stateParams', 'metaProjectResource', 'userResource', function($scope, $state, $stateParams, metaProjectResource, userResource){
 
-    console.log('metaprojctctrl detail ' + $stateParams.metaprojectid);
+    console.log('module_metaProject.controller');
 
     $scope.metaproject = {};
     $scope.metaproject.leader = {};

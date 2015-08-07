@@ -7,11 +7,7 @@ angular.module('module_metaProject')
 
   .controller('metaProjectCtrl_list', ['$scope', '$state', 'metaProjectResource', function($scope, $state, metaProjectResource){
 
-    //$scope.metaprojects = [
-    //  {id: 1, title:'firstMetaproject', courseOfStudies: 'win', semester: 4, leader:'Prof. Dr. John'},
-    //  {id: 2, title:'secondMetaproject', courseOfStudies: 'win', semester: 1, leader:'Prof. Maier'},
-    //  {id: 3, title:'thirdmetaproject', courseOfStudies: 'win', semester: 2, leader:'Prof. Jack'}
-    //];
+    console.log('module_metaProject.controller');
 
     $scope.clickNewMetaProject = function(){
       state.go('metaProjectNew');
