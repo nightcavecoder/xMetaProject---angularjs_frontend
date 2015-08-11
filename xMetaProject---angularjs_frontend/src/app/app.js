@@ -12,8 +12,7 @@ angular.module('module_app', [
   'module_user'
 ])
 
-.run(['$rootScope', '$state', '$stateParams', '$templateCache', '$http', function($rootScope, $state, $stateParams, $templateCache, $http) {
-
+.run(['$rootScope', '$state', '$stateParams', function($rootScope, $state, $stateParams) {
     console.log( 'module_app.run');
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;

@@ -24,9 +24,6 @@ angular.module('module_metaProject')
       metaProjectResource.getAll(successCallback, errorCallback);
     };
 
-
-
     //call this function now!
     $scope.getAllMetaProjects();
-
   }]);
